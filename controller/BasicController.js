@@ -44,7 +44,7 @@ const BasicController = {
     }
 
     // VALIDATE DATA
-    if (!data || !Object.keys(data).length) {
+    if (!data) {
       const message = 'data is required.';
       const response = null;
       return ApiResponse(res, message, 'error', response, 400);
@@ -52,6 +52,12 @@ const BasicController = {
 
     if (typeof data !== 'object' && typeof data !== 'string') {
       const message = 'data can either be a JSON object, an array or a string.';
+      const response = null;
+      return ApiResponse(res, message, 'error', response, 400);
+    }
+
+    if (!Object.keys(data).length) {
+      const message = 'data field is required.';
       const response = null;
       return ApiResponse(res, message, 'error', response, 400);
     }
