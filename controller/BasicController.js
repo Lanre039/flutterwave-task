@@ -44,7 +44,7 @@ const BasicController = {
     }
 
     // VALIDATE DATA
-    if (!data) {
+    if (!data || !Object.keys(data).length) {
       const message = 'data is required.';
       const response = null;
       return ApiResponse(res, message, 'error', response, 400);
